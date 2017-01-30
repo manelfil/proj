@@ -9,7 +9,8 @@ class Mystate(object):
     def __init__(self,state,idteam,idplayer):
         self.state = state
         self.key = (idteam,idplayer)
-	
+        self.id_team=idteam
+        self.id_player=idplayer
     @property
     def rienFaire(self):
         return SoccerAction()
@@ -147,7 +148,7 @@ def defenseur_droit(Mystate):
         if(Mystate.peutShooter):
             return Mystate.shootDefense
         else:
-            return Mystate.courirVersBalle
+            return Mystate.courirVersBallestate,
     return Mystate.replacementDefenseurDroit
 
 def milieu(Mystate):

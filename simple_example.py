@@ -7,7 +7,8 @@ class RandomStrategy(Strategy):
     def __init__(self):
         Strategy.__init__(self,"Random")
     def compute_strategy(self,state,id_team,id_player):
-        return SoccerAction(self.position_balle - self.position_joueur, Vector2D(0,0))
+        mystate=Mystate(state,id_team,id_player)
+        return SoccerAction(mystate.position_balle - mystate.position_joueur, Vector2D(0,0))
 
 ## Creation d'une equipe
 team1 = SoccerTeam(name="team1",login="etu1")
