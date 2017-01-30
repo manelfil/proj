@@ -166,5 +166,3 @@ def milieu_defensif(Mystate):
         else:
             return Mystate.courirVersBalle
     return Mystate.replacementMilieuDefensif
-
-
