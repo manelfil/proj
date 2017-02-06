@@ -2,6 +2,7 @@ import  soccersimulator
 from soccersimulator  import Strategy, SoccerAction, Vector2D
 from soccersimulator import SoccerTeam, Simulation
 from soccersimulator import SimuGUI,show_state,show_simu
+from soccersimulator.settings import *
 from tools import *
 import math
 import random
@@ -20,6 +21,30 @@ class PlayerStateDeco:
 	def pos(self):
 		return self.state.player_state(self.id_team,self.id_player).position
 	
+	def petit_pas(self):
+		x=self.cible
+		x.norm=1.2
+		if(self.dist_ball()<(PLAYER_RADIUS + BALL_RADIUS)):
+			if(self.distance_adv_proche()<20):
+				if(self.ball_pos.y > GAME_HEIGHT - 46):
+					x.y+=0.60
+				else:
+					x.y-=0.60
+				return SoccerAction(0,x)
+			else:
+				return SoccerAction(0,x)
+		else:
+			return SoccerAction()
+             
+ 
+
+	def campeur(self):
+		if(self.id_team==1):
+			camping=Vector2D(115,self.pos().y)
+		else:
+			camping=Vector2D(GAME_WIDTH-115,self.pos().y)
+		return SoccerAction(camping-self.pos(),Vector2D(0,0))
+ 
 	def pos_player(self,idteam,idplayer):
 		return self.state.player_state(idteam,idplayer).position
 	@property
@@ -208,9 +233,13 @@ class MaStrategyFonceur(Strategy):
 		Strategy.__init__(self,"Fonceur")
 	def compute_strategy(self, state, id_team, id_player):
 		Mystate=PlayerStateDeco(state, id_team, id_player)
-		return  SoccerAction(Mystate.ball_pos - Mystate.pos, Vector2D(0,0))
         
-
+class MaStrategyCampeur(Strategy):
+	def __init__(self):
+		Strategy.__init__(self,"Campeur")
+	def compute_strategy(self, state, id_team, id_player):
+		Mystate=PlayerStateDeco(state, id_team, id_player)
+		return  Mystate.campe()
         
 class MaStrategyDefensive(Strategy):
 	def __init__(self):
@@ -233,7 +262,7 @@ class RandomStrategy(Strategy):
         Strategy.__init__(self,"Random")
     def compute_strategy(self,state,id_team,id_player):
         mystate=PlayerStateDeco(state,id_team,id_player)
-        return SoccerAction(mystate.ball_pos - mystate.pos, Vector2D(0,0))
+        return SoccerAction()
 
 ## Creation d'une equipe
 team1 = SoccerTeam(name="team1",login="etu1")
@@ -241,7 +270,7 @@ team2 = SoccerTeam(name="team2",login="etu2")
 team1.add("John",MaStrategyFonceur()) #Strategie qui ne fait rien
 team2.add("Paul",MaStrategyGoal())   #Strategie aleatoire
 team1.add("Johns",MaStrategyGoal()) #Strategie qui ne fait rien
-team2.add("Pauls",MaStrategyGoal())   #Strategie aleatoire
+team2.add("Pauls",MaStrategyFonceur())   #Strategie aleatoire
 #Creation d'une partie
 simu = Simulation(team1,team2)
 #Jouer et afficher la partie
