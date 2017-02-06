@@ -1,9 +1,5 @@
-from PlayerStateDeco import MaStrategyFonceur
-from PlayerStateDeco import MaStrategyDefensive
-from PlayerStateDeco import MaStrategyCampeur
-from PlayerStateDeco import MaStrategyUtilitaire
-from PlayerStateDeco import MaStrategyGoal
-from PlayerStateDeco import SoccerTeam, Player
+from .tools import PlayerStateDeco , MaStrategyFonceur, MaStrategyDefensive, MaStrategyCampeur,  MaStrategyGoal
+from soccersimulator import SoccerTeam, Player
 
 
 
@@ -14,5 +10,5 @@ joueur4 = Player("Selmani", MaStrategyGoal())
 
 team1 = SoccerTeam("DZ", [joueur1])
 team2 = SoccerTeam("DZZ", [joueur2,joueur1])
-team4 = SoccerTeam("DZZZ", [joueur5, joueur2, joueur3, joueur4])
+team4 = SoccerTeam("DZZZ", [joueur1, joueur2, joueur3, joueur4])
 

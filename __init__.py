@@ -1,14 +1,16 @@
-import  soccersimulator
-from soccersimulator  import Strategy, SoccerAction, Vector2D
-from soccersimulator import SoccerTeam, Simulation
-from soccersimulator import SimuGUI,show_state,show_simu
-from soccersimulator.settings import *
-from tools import *
-import math
-import random
-from team import team1,team2, team4
+from soccersimulator import SoccerTeam
+from .team import joueur1,joueur2,joueur3,joueur4
 
 
 
+
+
+def get_team(i):
+	if i==1:
+		return SoccerTeam("DZ", [joueur1])
+	if i==2:
+		return SoccerTeam("DZZ", [joueur2,joueur1])
+	if i==4:
+		return SoccerTeam("DZZZ", [joueur5, joueur2, joueur3, joueur4])
 
 
