@@ -13,6 +13,6 @@ joueur3 = Player("Larsen", MaStrategyCampeur())
 joueur4 = Player("Selmani", MaStrategyGoal())
 
 team1 = SoccerTeam("DZ", [joueur1])
-team2 = SoccerTeam("Tremblez!", [joueur2,joueur1])
-team4 = SoccerTeam("Lel", [joueur5, joueur2, joueur3, joueur4])
+team2 = SoccerTeam("DZZ", [joueur2,joueur1])
+team4 = SoccerTeam("DZZZ", [joueur5, joueur2, joueur3, joueur4])
 
