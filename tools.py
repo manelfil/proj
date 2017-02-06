@@ -260,3 +260,15 @@ class MaStrategyGoal(Strategy):
 	def compute_strategy(self,state,id_team,id_player):
 		Mystate=PlayerStateDeco(state,id_team,id_player)
 		return Mystate.goal()
+
+
+
+
+
+
+
+
+
+		return Mystate.goal()
+
+		return Mystate.goal()

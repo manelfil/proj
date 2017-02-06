@@ -8,7 +8,7 @@ from PlayerStateDeco import SoccerTeam, Player
 
 
 joueur1 = Player("Majrez", MaStrategyFonceur())
-joueur2 = Player("Mnolhi", MaStrategyDefensive())
+joueur2 = Player("Mnolhi", MaStrategyGoal())
 joueur3 = Player("Larsen", MaStrategyCampeur())
 joueur4 = Player("Selmani", MaStrategyGoal())
 
